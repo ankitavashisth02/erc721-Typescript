@@ -2,7 +2,8 @@ import React, {useState, useEffect} from 'react';
 import './App.css';
 import Body from './Body';
 import abi from './assets/MyNFT.json';
-import {ethers} from  "ethers";
+import {BaseContract, ethers} from  "ethers";
+import {MyNFT} from "../../typechain-types";
 
 interface IAccount {
   account : string | null;
@@ -11,7 +12,7 @@ interface IAccount {
 export interface IState {
   provider : ethers.BrowserProvider | null;
   signer : ethers.JsonRpcSigner | null;
-  contract : ethers.Contract | null;
+  contract : MyNFT | null;
 }
 
 const App : React.FC = () =>{
@@ -47,7 +48,7 @@ const App : React.FC = () =>{
             contractAddress,
             contractAddressAbi,
             signer
-          );
+          ) as BaseContract as MyNFT;
 
           setAccounts({
             account: account[0]

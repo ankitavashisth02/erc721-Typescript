@@ -38,7 +38,7 @@ const Body: React.FC<{ state: IState | null }> = (props) => {
   
       const burned = await contract?.burn1(Number(tokenId));
   
-      await burned.wait();
+      await burned?.wait();
   
       setBurning(false);
       toast("nft Burned !!");
@@ -57,11 +57,11 @@ const Body: React.FC<{ state: IState | null }> = (props) => {
   
         const txn = await contract?.mintNFT(tokenURI, options);
         toast("Transaction is proccessing..");
-        if(!await txn.wait()){
+        if(!await txn?.wait()){
             setLoading(false)
         }
         
-        await txn.wait();
+        await txn?.wait();
         setLoading(false);
   
         toast("Minted");
