@@ -3,7 +3,7 @@ import './App.css';
 import Body from './Body';
 import abi from './assets/MyNFT.json';
 import {BaseContract, ethers} from  "ethers";
-import {MyNFT} from "../../typechain-types";
+import {MyNFT} from "../typechain-types";
 
 interface IAccount {
   account : string | null;
